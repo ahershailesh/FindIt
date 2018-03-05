@@ -7,21 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62A1A20312FB92E9BC5DD4D9 /* Pods_FindIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7033FFB307F6BDBA4B8FA19 /* Pods_FindIt.framework */; };
 		8AE79374204D6D4100BE7B1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79373204D6D4100BE7B1E /* AppDelegate.swift */; };
-		8AE79376204D6D4100BE7B1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79375204D6D4100BE7B1E /* ViewController.swift */; };
+		8AE79376204D6D4100BE7B1E /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79375204D6D4100BE7B1E /* ImageCollectionViewController.swift */; };
 		8AE79379204D6D4100BE7B1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AE79377204D6D4100BE7B1E /* Main.storyboard */; };
 		8AE7937B204D6D4100BE7B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AE7937A204D6D4100BE7B1E /* Assets.xcassets */; };
 		8AE7937E204D6D4100BE7B1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AE7937C204D6D4100BE7B1E /* LaunchScreen.storyboard */; };
+		8AE79387204D6E0B00BE7B1E /* ImageViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79385204D6E0B00BE7B1E /* ImageViewCollectionViewCell.swift */; };
+		8AE79388204D6E0B00BE7B1E /* ImageViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AE79386204D6E0B00BE7B1E /* ImageViewCollectionViewCell.xib */; };
+		8AE7938B204D704300BE7B1E /* FlickrHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79389204D704200BE7B1E /* FlickrHandler.swift */; };
+		8AE7938C204D704300BE7B1E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7938A204D704300BE7B1E /* NetworkManager.swift */; };
+		8AE7938E204D708700BE7B1E /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7938D204D708700BE7B1E /* PhotoModel.swift */; };
+		8AE79390204D70F000BE7B1E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7938F204D70F000BE7B1E /* Constants.swift */; };
+		8AE79392204D71A400BE7B1E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79391204D71A400BE7B1E /* Extensions.swift */; };
+		8AE79394204D85BB00BE7B1E /* PhotoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79393204D85BB00BE7B1E /* PhotoResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D567D6C05D2FFCB83398AF2 /* Pods-FindIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindIt/Pods-FindIt.release.xcconfig"; sourceTree = "<group>"; };
 		8AE79370204D6D4100BE7B1E /* FindIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE79373204D6D4100BE7B1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8AE79375204D6D4100BE7B1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8AE79375204D6D4100BE7B1E /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
 		8AE79378204D6D4100BE7B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AE7937A204D6D4100BE7B1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AE7937D204D6D4100BE7B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AE7937F204D6D4100BE7B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AE79385204D6E0B00BE7B1E /* ImageViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		8AE79386204D6E0B00BE7B1E /* ImageViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewCollectionViewCell.xib; sourceTree = "<group>"; };
+		8AE79389204D704200BE7B1E /* FlickrHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrHandler.swift; sourceTree = "<group>"; };
+		8AE7938A204D704300BE7B1E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		8AE7938D204D708700BE7B1E /* PhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		8AE7938F204D70F000BE7B1E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8AE79391204D71A400BE7B1E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8AE79393204D85BB00BE7B1E /* PhotoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResult.swift; sourceTree = "<group>"; };
+		B7D6A08094882A4AD1339306 /* Pods-FindIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindIt/Pods-FindIt.debug.xcconfig"; sourceTree = "<group>"; };
+		D7033FFB307F6BDBA4B8FA19 /* Pods_FindIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62A1A20312FB92E9BC5DD4D9 /* Pods_FindIt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +61,8 @@
 			children = (
 				8AE79372204D6D4100BE7B1E /* FindIt */,
 				8AE79371204D6D4100BE7B1E /* Products */,
+				F50B575B816FE46B2DE8425A /* Pods */,
+				A22AB5263AA52584F344BC23 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +77,39 @@
 		8AE79372204D6D4100BE7B1E /* FindIt */ = {
 			isa = PBXGroup;
 			children = (
+				8AE79391204D71A400BE7B1E /* Extensions.swift */,
+				8AE7938F204D70F000BE7B1E /* Constants.swift */,
+				8AE7938D204D708700BE7B1E /* PhotoModel.swift */,
+				8AE79389204D704200BE7B1E /* FlickrHandler.swift */,
+				8AE7938A204D704300BE7B1E /* NetworkManager.swift */,
 				8AE79373204D6D4100BE7B1E /* AppDelegate.swift */,
-				8AE79375204D6D4100BE7B1E /* ViewController.swift */,
+				8AE79375204D6D4100BE7B1E /* ImageCollectionViewController.swift */,
 				8AE79377204D6D4100BE7B1E /* Main.storyboard */,
 				8AE7937A204D6D4100BE7B1E /* Assets.xcassets */,
 				8AE7937C204D6D4100BE7B1E /* LaunchScreen.storyboard */,
 				8AE7937F204D6D4100BE7B1E /* Info.plist */,
+				8AE79385204D6E0B00BE7B1E /* ImageViewCollectionViewCell.swift */,
+				8AE79386204D6E0B00BE7B1E /* ImageViewCollectionViewCell.xib */,
+				8AE79393204D85BB00BE7B1E /* PhotoResult.swift */,
 			);
 			path = FindIt;
+			sourceTree = "<group>";
+		};
+		A22AB5263AA52584F344BC23 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D7033FFB307F6BDBA4B8FA19 /* Pods_FindIt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F50B575B816FE46B2DE8425A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B7D6A08094882A4AD1339306 /* Pods-FindIt.debug.xcconfig */,
+				7D567D6C05D2FFCB83398AF2 /* Pods-FindIt.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +119,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8AE79382204D6D4100BE7B1E /* Build configuration list for PBXNativeTarget "FindIt" */;
 			buildPhases = (
+				C78DF3B406FB382FEF326D31 /* [CP] Check Pods Manifest.lock */,
 				8AE7936C204D6D4100BE7B1E /* Sources */,
 				8AE7936D204D6D4100BE7B1E /* Frameworks */,
 				8AE7936E204D6D4100BE7B1E /* Resources */,
+				CAA00465DE55BD9AB7A31776 /* [CP] Embed Pods Frameworks */,
+				1B226904856B50B949F05CF9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AE7937E204D6D4100BE7B1E /* LaunchScreen.storyboard in Resources */,
+				8AE79388204D6E0B00BE7B1E /* ImageViewCollectionViewCell.xib in Resources */,
 				8AE7937B204D6D4100BE7B1E /* Assets.xcassets in Resources */,
 				8AE79379204D6D4100BE7B1E /* Main.storyboard in Resources */,
 			);
@@ -131,13 +183,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B226904856B50B949F05CF9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FindIt/Pods-FindIt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C78DF3B406FB382FEF326D31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FindIt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAA00465DE55BD9AB7A31776 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FindIt/Pods-FindIt-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FindIt/Pods-FindIt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8AE7936C204D6D4100BE7B1E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AE79376204D6D4100BE7B1E /* ViewController.swift in Sources */,
+				8AE7938E204D708700BE7B1E /* PhotoModel.swift in Sources */,
+				8AE79376204D6D4100BE7B1E /* ImageCollectionViewController.swift in Sources */,
 				8AE79374204D6D4100BE7B1E /* AppDelegate.swift in Sources */,
+				8AE79392204D71A400BE7B1E /* Extensions.swift in Sources */,
+				8AE7938C204D704300BE7B1E /* NetworkManager.swift in Sources */,
+				8AE79390204D70F000BE7B1E /* Constants.swift in Sources */,
+				8AE79394204D85BB00BE7B1E /* PhotoResult.swift in Sources */,
+				8AE79387204D6E0B00BE7B1E /* ImageViewCollectionViewCell.swift in Sources */,
+				8AE7938B204D704300BE7B1E /* FlickrHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +385,7 @@
 		};
 		8AE79383204D6D4100BE7B1E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D6A08094882A4AD1339306 /* Pods-FindIt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +401,7 @@
 		};
 		8AE79384204D6D4100BE7B1E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D567D6C05D2FFCB83398AF2 /* Pods-FindIt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
