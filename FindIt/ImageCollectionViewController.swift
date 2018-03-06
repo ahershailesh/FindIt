@@ -70,6 +70,7 @@ class ImageCollectionViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         dataHandler?.refreshSavedData()
         collectionView.reloadData()
+        navigationController?.setToolbarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,6 +98,7 @@ class ImageCollectionViewController: UIViewController {
             layout.minimumInteritemSpacing = ITEM_SPACING
             layout.minimumLineSpacing = LINE_SPACING
         }
+        
         if dataHandler!.mode == .savedCollection {
             let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteImages))
             navigationItem.leftBarButtonItem = deleteButton
@@ -117,6 +119,14 @@ class ImageCollectionViewController: UIViewController {
         dataHandler?.deleteSelectedImages()
         collectionView.reloadData()
         navigationItem.leftBarButtonItem?.isEnabled = false
+    }
+    
+    private func showPreview(model: PreviewModel) {
+        let controller = PreviewImageViewController()
+        controller.model = model
+        controller.notifier = self
+        controller.selection = dataHandler!.isImageSelected(id: model.id!)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
@@ -155,12 +165,19 @@ extension ImageCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as? ImageViewCollectionViewCell
         let id = cell?.photoModel?.id ?? cell?.savedModel?.id
-        if let thisId = id,
+        if dataHandler!.mode == .savedCollection,
+            let thisId = id,
             let image = cell?.imageView.image,
             let imageData = UIImagePNGRepresentation(image) {
             navigationItem.leftBarButtonItem?.isEnabled = true
             let status = dataHandler!.selectImage(id: thisId, imageData: imageData as NSData, keyword: title!)
             setSelection(onCell: cell, selection: status)
+        } else if let image = cell?.imageView.image {
+            var model = PreviewModel()
+            model.id = id
+            model.image = image
+            model.indexPath = indexPath
+            showPreview(model: model)
         }
     }
     
@@ -185,3 +202,17 @@ extension ImageCollectionViewController: FlickrProtocol {
         navigationItem.leftBarButtonItem?.isEnabled = false
     }
 }
+
+extension ImageCollectionViewController : PreviewImageProtocol {
+    func imageLikeButtonTapped(model: PreviewModel, selection: Bool) {
+        let status = dataHandler!.selectImage(id: model.id!, imageData: UIImagePNGRepresentation(model.image!) as! NSData , keyword: title!)
+        if let cell = collectionView.cellForItem(at: model.indexPath!) as? ImageViewCollectionViewCell {
+            setSelection(onCell: cell, selection: status)
+        }
+    }
+    
+    func imageShared(model: PreviewModel) {
+        
+    }
+}
+

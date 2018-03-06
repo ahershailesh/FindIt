@@ -103,6 +103,12 @@ class FlickrHandler: NetworkManager {
         return savedImageIds.contains(id)
     }
     
+    func saveImage(tag: String, pic: Data, id: String) {
+        let savedImage = SavedImage(tag: tag, pic: pic as NSData, id: id, contenxt: appDelegate.coreDataStack.context!)
+        savedImages.append(savedImage)
+        savedImageIds.append(id)
+    }
+    
     private func mergeResults(nextResult: PhotoResult) {
         guard let prevResult = photoResult else {
             photoResult = nextResult

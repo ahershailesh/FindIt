@@ -76,7 +76,7 @@ class ImageViewCollectionViewCell: UICollectionViewCell, Placeholder {
     }
     
     private func setLiked(bool selection: Bool) {
-        let image = selection ? UIImage(named: "heart") : nil
+        let image = selection ? UIImage(named: "hearts_24") : nil
         selectedIndicatorImage.image = image
         self.selectedIndicatorImage.transform = CGAffineTransform(scaleX: 0, y: 0)
         UIView.animate(withDuration: 0.3) {

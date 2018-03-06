@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		62A1A20312FB92E9BC5DD4D9 /* Pods_FindIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7033FFB307F6BDBA4B8FA19 /* Pods_FindIt.framework */; };
+		8A809BED204F0C590019E75D /* PreviewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A809BEB204F0C590019E75D /* PreviewImageViewController.swift */; };
+		8A809BEE204F0C590019E75D /* PreviewImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A809BEC204F0C590019E75D /* PreviewImageViewController.xib */; };
+		8A809BF0204F133F0019E75D /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A809BEF204F133F0019E75D /* PreviewModel.swift */; };
 		8ABD8C44204E99EA00972D5D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD8C43204E99EA00972D5D /* CoreDataStack.swift */; };
 		8ABD8C5B204EAFC100972D5D /* Images.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD8C45204E9A8D00972D5D /* Images.xcdatamodeld */; };
 		8ABD8C87204EB4B700972D5D /* SavedImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD8C85204EB4B600972D5D /* SavedImage+CoreDataProperties.swift */; };
@@ -35,6 +38,9 @@
 
 /* Begin PBXFileReference section */
 		7D567D6C05D2FFCB83398AF2 /* Pods-FindIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindIt/Pods-FindIt.release.xcconfig"; sourceTree = "<group>"; };
+		8A809BEB204F0C590019E75D /* PreviewImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageViewController.swift; sourceTree = "<group>"; };
+		8A809BEC204F0C590019E75D /* PreviewImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewImageViewController.xib; sourceTree = "<group>"; };
+		8A809BEF204F133F0019E75D /* PreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModel.swift; sourceTree = "<group>"; };
 		8ABD8C43204E99EA00972D5D /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8ABD8C46204E9A8D00972D5D /* Images.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Images.xcdatamodel; sourceTree = "<group>"; };
 		8ABD8C85204EB4B600972D5D /* SavedImage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SavedImage+CoreDataProperties.swift"; path = "/Users/shaileshaher/Udacity/FindIt/FindIt/SavedImage+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
@@ -121,6 +127,9 @@
 				8ABD8C43204E99EA00972D5D /* CoreDataStack.swift */,
 				8ABD8C45204E9A8D00972D5D /* Images.xcdatamodeld */,
 				8AD84C69204ED8E800368FD6 /* CameraController.xib */,
+				8A809BEB204F0C590019E75D /* PreviewImageViewController.swift */,
+				8A809BEC204F0C590019E75D /* PreviewImageViewController.xib */,
+				8A809BEF204F133F0019E75D /* PreviewModel.swift */,
 			);
 			path = FindIt;
 			sourceTree = "<group>";
@@ -209,6 +218,7 @@
 				8AE793A0204E43F100BE7B1E /* SuggestionCell.xib in Resources */,
 				8AE7937B204D6D4100BE7B1E /* Assets.xcassets in Resources */,
 				8AD84C6A204ED8E800368FD6 /* CameraController.xib in Resources */,
+				8A809BEE204F0C590019E75D /* PreviewImageViewController.xib in Resources */,
 				8AEC5A8D204E753C00914C94 /* ImageCollectionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,9 +284,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A809BF0204F133F0019E75D /* PreviewModel.swift in Sources */,
 				8AE7939A204E423C00BE7B1E /* Resnet50.mlmodel in Sources */,
 				8ABD8C5B204EAFC100972D5D /* Images.xcdatamodeld in Sources */,
 				8AE7938E204D708700BE7B1E /* PhotoModel.swift in Sources */,
+				8A809BED204F0C590019E75D /* PreviewImageViewController.swift in Sources */,
 				8AE79376204D6D4100BE7B1E /* ImageCollectionViewController.swift in Sources */,
 				8AE7939F204E43F100BE7B1E /* SuggestionCell.swift in Sources */,
 				8AE793A2204E447400BE7B1E /* Suggestion.swift in Sources */,
