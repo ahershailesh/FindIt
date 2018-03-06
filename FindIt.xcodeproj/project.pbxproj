@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		62A1A20312FB92E9BC5DD4D9 /* Pods_FindIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7033FFB307F6BDBA4B8FA19 /* Pods_FindIt.framework */; };
 		8ABD8C44204E99EA00972D5D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD8C43204E99EA00972D5D /* CoreDataStack.swift */; };
+		8ABD8C5B204EAFC100972D5D /* Images.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD8C45204E9A8D00972D5D /* Images.xcdatamodeld */; };
+		8ABD8C87204EB4B700972D5D /* SavedImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD8C85204EB4B600972D5D /* SavedImage+CoreDataProperties.swift */; };
+		8ABD8C88204EB4B700972D5D /* SavedImage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD8C86204EB4B700972D5D /* SavedImage+CoreDataClass.swift */; };
+		8AD84C6A204ED8E800368FD6 /* CameraController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD84C69204ED8E800368FD6 /* CameraController.xib */; };
 		8AE79374204D6D4100BE7B1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79373204D6D4100BE7B1E /* AppDelegate.swift */; };
 		8AE79376204D6D4100BE7B1E /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79375204D6D4100BE7B1E /* ImageCollectionViewController.swift */; };
-		8AE79379204D6D4100BE7B1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AE79377204D6D4100BE7B1E /* Main.storyboard */; };
 		8AE7937B204D6D4100BE7B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AE7937A204D6D4100BE7B1E /* Assets.xcassets */; };
 		8AE7937E204D6D4100BE7B1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AE7937C204D6D4100BE7B1E /* LaunchScreen.storyboard */; };
 		8AE79387204D6E0B00BE7B1E /* ImageViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79385204D6E0B00BE7B1E /* ImageViewCollectionViewCell.swift */; };
@@ -33,10 +36,13 @@
 /* Begin PBXFileReference section */
 		7D567D6C05D2FFCB83398AF2 /* Pods-FindIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindIt/Pods-FindIt.release.xcconfig"; sourceTree = "<group>"; };
 		8ABD8C43204E99EA00972D5D /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		8ABD8C46204E9A8D00972D5D /* Images.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Images.xcdatamodel; sourceTree = "<group>"; };
+		8ABD8C85204EB4B600972D5D /* SavedImage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SavedImage+CoreDataProperties.swift"; path = "/Users/shaileshaher/Udacity/FindIt/FindIt/SavedImage+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		8ABD8C86204EB4B700972D5D /* SavedImage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SavedImage+CoreDataClass.swift"; path = "/Users/shaileshaher/Udacity/FindIt/FindIt/SavedImage+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		8AD84C69204ED8E800368FD6 /* CameraController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraController.xib; sourceTree = "<group>"; };
 		8AE79370204D6D4100BE7B1E /* FindIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE79373204D6D4100BE7B1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AE79375204D6D4100BE7B1E /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
-		8AE79378204D6D4100BE7B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AE7937A204D6D4100BE7B1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AE7937D204D6D4100BE7B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AE7937F204D6D4100BE7B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +97,8 @@
 		8AE79372204D6D4100BE7B1E /* FindIt */ = {
 			isa = PBXGroup;
 			children = (
+				8ABD8C86204EB4B700972D5D /* SavedImage+CoreDataClass.swift */,
+				8ABD8C85204EB4B600972D5D /* SavedImage+CoreDataProperties.swift */,
 				8AE79391204D71A400BE7B1E /* Extensions.swift */,
 				8AE7938F204D70F000BE7B1E /* Constants.swift */,
 				8AE7938D204D708700BE7B1E /* PhotoModel.swift */,
@@ -100,7 +108,6 @@
 				8AE79373204D6D4100BE7B1E /* AppDelegate.swift */,
 				8AEC5A8C204E753C00914C94 /* ImageCollectionViewController.xib */,
 				8AE79375204D6D4100BE7B1E /* ImageCollectionViewController.swift */,
-				8AE79377204D6D4100BE7B1E /* Main.storyboard */,
 				8AE7937A204D6D4100BE7B1E /* Assets.xcassets */,
 				8AE7937C204D6D4100BE7B1E /* LaunchScreen.storyboard */,
 				8AE7937F204D6D4100BE7B1E /* Info.plist */,
@@ -112,6 +119,8 @@
 				8AE7939E204E43F100BE7B1E /* SuggestionCell.xib */,
 				8AE793A1204E447300BE7B1E /* Suggestion.swift */,
 				8ABD8C43204E99EA00972D5D /* CoreDataStack.swift */,
+				8ABD8C45204E9A8D00972D5D /* Images.xcdatamodeld */,
+				8AD84C69204ED8E800368FD6 /* CameraController.xib */,
 			);
 			path = FindIt;
 			sourceTree = "<group>";
@@ -199,8 +208,8 @@
 				8AE79388204D6E0B00BE7B1E /* ImageViewCollectionViewCell.xib in Resources */,
 				8AE793A0204E43F100BE7B1E /* SuggestionCell.xib in Resources */,
 				8AE7937B204D6D4100BE7B1E /* Assets.xcassets in Resources */,
+				8AD84C6A204ED8E800368FD6 /* CameraController.xib in Resources */,
 				8AEC5A8D204E753C00914C94 /* ImageCollectionViewController.xib in Resources */,
-				8AE79379204D6D4100BE7B1E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,17 +275,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AE7939A204E423C00BE7B1E /* Resnet50.mlmodel in Sources */,
+				8ABD8C5B204EAFC100972D5D /* Images.xcdatamodeld in Sources */,
 				8AE7938E204D708700BE7B1E /* PhotoModel.swift in Sources */,
 				8AE79376204D6D4100BE7B1E /* ImageCollectionViewController.swift in Sources */,
 				8AE7939F204E43F100BE7B1E /* SuggestionCell.swift in Sources */,
 				8AE793A2204E447400BE7B1E /* Suggestion.swift in Sources */,
 				8AE79374204D6D4100BE7B1E /* AppDelegate.swift in Sources */,
+				8ABD8C87204EB4B700972D5D /* SavedImage+CoreDataProperties.swift in Sources */,
 				8AE7939C204E425900BE7B1E /* CameraController.swift in Sources */,
 				8ABD8C44204E99EA00972D5D /* CoreDataStack.swift in Sources */,
 				8AE79392204D71A400BE7B1E /* Extensions.swift in Sources */,
 				8AE7938C204D704300BE7B1E /* NetworkManager.swift in Sources */,
 				8AE79390204D70F000BE7B1E /* Constants.swift in Sources */,
 				8AE79394204D85BB00BE7B1E /* PhotoResult.swift in Sources */,
+				8ABD8C88204EB4B700972D5D /* SavedImage+CoreDataClass.swift in Sources */,
 				8AE79387204D6E0B00BE7B1E /* ImageViewCollectionViewCell.swift in Sources */,
 				8AE7938B204D704300BE7B1E /* FlickrHandler.swift in Sources */,
 			);
@@ -285,14 +297,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8AE79377204D6D4100BE7B1E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8AE79378204D6D4100BE7B1E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8AE7937C204D6D4100BE7B1E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -465,6 +469,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8ABD8C45204E9A8D00972D5D /* Images.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8ABD8C46204E9A8D00972D5D /* Images.xcdatamodel */,
+			);
+			currentVersion = 8ABD8C46204E9A8D00972D5D /* Images.xcdatamodel */;
+			path = Images.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8AE79368204D6D4100BE7B1E /* Project object */;
 }

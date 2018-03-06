@@ -22,11 +22,20 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_image" translatesAutoresizingMaskIntoConstraints="NO" id="47G-Ny-OQx">
                         <rect key="frame" x="2" y="2" width="245" height="204"/>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="8aM-Fq-8rK">
+                        <rect key="frame" x="231" y="2" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="R21-9P-awO"/>
+                            <constraint firstAttribute="height" constant="16" id="wa7-er-gPf"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="47G-Ny-OQx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="Qgl-rg-K7x"/>
+                <constraint firstItem="8aM-Fq-8rK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="byD-wA-wAP"/>
                 <constraint firstAttribute="trailing" secondItem="47G-Ny-OQx" secondAttribute="trailing" constant="2" id="fe8-aL-X8D"/>
+                <constraint firstAttribute="trailing" secondItem="8aM-Fq-8rK" secondAttribute="trailing" constant="2" id="nTF-0x-DWJ"/>
                 <constraint firstItem="47G-Ny-OQx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="shI-bx-pR9"/>
                 <constraint firstAttribute="bottom" secondItem="47G-Ny-OQx" secondAttribute="bottom" constant="2" id="tG9-YF-EGg"/>
             </constraints>
@@ -34,11 +43,13 @@
             <size key="customSize" width="249" height="208"/>
             <connections>
                 <outlet property="imageView" destination="47G-Ny-OQx" id="whx-sA-sGb"/>
+                <outlet property="selectedIndicatorImage" destination="8aM-Fq-8rK" id="V6K-FX-VPX"/>
             </connections>
             <point key="canvasLocation" x="-19.5" y="-108"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="heart" width="64" height="64"/>
         <image name="no_image" width="225" height="225"/>
     </resources>
 </document>

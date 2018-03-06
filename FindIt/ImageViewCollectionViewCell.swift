@@ -16,6 +16,25 @@ class ImageViewCollectionViewCell: UICollectionViewCell, Placeholder {
         super.awakeFromNib()
         contentView.backgroundColor = UIColor.white
     }
+    
+    @IBOutlet weak var selectedIndicatorImage: UIImageView!
+    var selection : Bool? {
+        didSet {
+            guard let selection = selection else {
+                return
+            }
+            setSelected(selection: selection)
+        }
+    }
+    
+    var like : Bool? {
+        didSet {
+            guard let selection = like else {
+                return
+            }
+            setLiked(bool : selection)
+        }
+    }
 
     var photoModel : PhotoModel? {
         didSet {
@@ -26,6 +45,46 @@ class ImageViewCollectionViewCell: UICollectionViewCell, Placeholder {
         }
     }
     
+    var savedModel : SavedImage? {
+        didSet {
+            guard let model = savedModel, let data = model.image else {
+                return
+            }
+            self.layer.cornerRadius = 8
+            imageView.image = UIImage(data: data as Data)
+        }
+    }
+    
+    private func setSelected(selection: Bool) {
+        let image = selection ? UIImage(named: "checked") : nil
+        selectedIndicatorImage.image = image
+        self.selectedIndicatorImage.transform = CGAffineTransform(scaleX: 0, y: 0)
+        UIView.animate(withDuration: 0.3) {
+            self.selectedIndicatorImage.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }
+        imageViewAnimation(forSelection: selection)
+    }
+    
+    private func imageViewAnimation(forSelection selection: Bool) {
+        var scale : CGFloat = 1
+        if selection {
+            scale = 0.8
+        }
+        UIView.animate(withDuration: 0.3) {
+            self.imageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }
+    }
+    
+    private func setLiked(bool selection: Bool) {
+        let image = selection ? UIImage(named: "heart") : nil
+        selectedIndicatorImage.image = image
+        self.selectedIndicatorImage.transform = CGAffineTransform(scaleX: 0, y: 0)
+        UIView.animate(withDuration: 0.3) {
+            self.selectedIndicatorImage.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }
+        imageViewAnimation(forSelection: selection)
+    }
+    
     func add(to imageView: ImageView) {
         imageView.image = UIImage(named: "no_image")
     }
@@ -34,4 +93,5 @@ class ImageViewCollectionViewCell: UICollectionViewCell, Placeholder {
     func remove(from imageView: ImageView) {
         imageView.image = nil
     }
+    
 }

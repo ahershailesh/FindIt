@@ -27,6 +27,11 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var previewView: UIView!
     
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +39,7 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         self.collectionView.delegate = self
         self.collectionView.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         setupCollectionView()
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
         // get hold of the default video camera
         guard let camera = AVCaptureDevice.default(for: .video) else {
             showAlert(message: "Camera functionality is not available", title: "Improtant")
@@ -186,24 +191,6 @@ extension CameraController : UICollectionViewDataSource {
         }
         return UICollectionViewCell()
     }
-    
-//    private func loadSuggestionArray(array : [Suggestion]) {
-//        let newArray = array.map { $0.title }
-//        let oldArray = suggestionArray.map { $0.title }
-//
-//        for (newIndex, item) in newArray.enumerated() {
-//            if let oldIndex = oldArray.index(where: { (oldString) -> Bool in
-//                item == oldString
-//            }) {
-//                if oldIndex != newIndex {
-//                    collectionView.moveItem(at: IndexPath(row: oldIndex, section: 0), to: IndexPath(row: newIndex, section: 0))
-//                    setEstimatedSizeIfNeeded()
-//                }
-//            }
-//        }
-//        suggestionArray = array
-//        reload()
-//    }
 }
 
 extension CameraController : UICollectionViewDelegate {
