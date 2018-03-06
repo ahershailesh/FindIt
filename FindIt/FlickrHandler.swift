@@ -12,6 +12,7 @@ import CoreData
 @objc protocol FlickrProtocol {
     @objc func prefetchingDone()
     @objc optional func prefetchingWillStart()
+    @objc optional func selectedContentsEmptied()
 }
 
 
@@ -77,11 +78,14 @@ class FlickrHandler: NetworkManager {
         return nil
     }
     
-    func saveImage(id: String, imageData: NSData, keyword: String) -> Bool {
+    func selectImage(id: String, imageData: NSData, keyword: String) -> Bool {
         var status = false
         if let index = savedImageIds.index(of: id), index < savedImageIds.count {
             savedImageIds.remove(at: index)
             appDelegate.coreDataStack.context?.delete(savedImages[index])
+            if savedImageIds.isEmpty {
+                notifier?.selectedContentsEmptied?()
+            }
             status = false
             
         } else {
@@ -92,7 +96,6 @@ class FlickrHandler: NetworkManager {
             savedImageIds.append(id)
             status = true
         }
-        
         return status
     }
     

@@ -100,7 +100,7 @@ class ImageCollectionViewController: UIViewController {
         if dataHandler!.mode == .savedCollection {
             let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteImages))
             navigationItem.leftBarButtonItem = deleteButton
-            
+            navigationItem.leftBarButtonItem?.isEnabled = false
             let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(presentCamera))
             navigationItem.rightBarButtonItem = cameraButton
         }
@@ -116,6 +116,7 @@ class ImageCollectionViewController: UIViewController {
     @objc private func deleteImages() {
         dataHandler?.deleteSelectedImages()
         collectionView.reloadData()
+        navigationItem.leftBarButtonItem?.isEnabled = false
     }
 }
 
@@ -157,7 +158,8 @@ extension ImageCollectionViewController: UICollectionViewDelegate {
         if let thisId = id,
             let image = cell?.imageView.image,
             let imageData = UIImagePNGRepresentation(image) {
-            let status = dataHandler!.saveImage(id: thisId, imageData: imageData as NSData, keyword: title!)
+            navigationItem.leftBarButtonItem?.isEnabled = true
+            let status = dataHandler!.selectImage(id: thisId, imageData: imageData as NSData, keyword: title!)
             setSelection(onCell: cell, selection: status)
         }
     }
@@ -177,5 +179,9 @@ extension ImageCollectionViewController: FlickrProtocol {
         mainThread {
             self.collectionView.reloadData()
         }
+    }
+    
+    func selectedContentsEmptied() {
+        navigationItem.leftBarButtonItem?.isEnabled = false
     }
 }
