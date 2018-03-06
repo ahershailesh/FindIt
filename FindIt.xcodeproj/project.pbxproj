@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		62A1A20312FB92E9BC5DD4D9 /* Pods_FindIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7033FFB307F6BDBA4B8FA19 /* Pods_FindIt.framework */; };
+		8ABD8C44204E99EA00972D5D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD8C43204E99EA00972D5D /* CoreDataStack.swift */; };
 		8AE79374204D6D4100BE7B1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79373204D6D4100BE7B1E /* AppDelegate.swift */; };
 		8AE79376204D6D4100BE7B1E /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79375204D6D4100BE7B1E /* ImageCollectionViewController.swift */; };
 		8AE79379204D6D4100BE7B1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AE79377204D6D4100BE7B1E /* Main.storyboard */; };
@@ -21,10 +22,17 @@
 		8AE79390204D70F000BE7B1E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7938F204D70F000BE7B1E /* Constants.swift */; };
 		8AE79392204D71A400BE7B1E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79391204D71A400BE7B1E /* Extensions.swift */; };
 		8AE79394204D85BB00BE7B1E /* PhotoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79393204D85BB00BE7B1E /* PhotoResult.swift */; };
+		8AE7939A204E423C00BE7B1E /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79399204E423C00BE7B1E /* Resnet50.mlmodel */; };
+		8AE7939C204E425900BE7B1E /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7939B204E425900BE7B1E /* CameraController.swift */; };
+		8AE7939F204E43F100BE7B1E /* SuggestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7939D204E43F100BE7B1E /* SuggestionCell.swift */; };
+		8AE793A0204E43F100BE7B1E /* SuggestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AE7939E204E43F100BE7B1E /* SuggestionCell.xib */; };
+		8AE793A2204E447400BE7B1E /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE793A1204E447300BE7B1E /* Suggestion.swift */; };
+		8AEC5A8D204E753C00914C94 /* ImageCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEC5A8C204E753C00914C94 /* ImageCollectionViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7D567D6C05D2FFCB83398AF2 /* Pods-FindIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindIt/Pods-FindIt.release.xcconfig"; sourceTree = "<group>"; };
+		8ABD8C43204E99EA00972D5D /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8AE79370204D6D4100BE7B1E /* FindIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE79373204D6D4100BE7B1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AE79375204D6D4100BE7B1E /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +48,12 @@
 		8AE7938F204D70F000BE7B1E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8AE79391204D71A400BE7B1E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8AE79393204D85BB00BE7B1E /* PhotoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResult.swift; sourceTree = "<group>"; };
+		8AE79399204E423C00BE7B1E /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		8AE7939B204E425900BE7B1E /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		8AE7939D204E43F100BE7B1E /* SuggestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCell.swift; sourceTree = "<group>"; };
+		8AE7939E204E43F100BE7B1E /* SuggestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionCell.xib; sourceTree = "<group>"; };
+		8AE793A1204E447300BE7B1E /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
+		8AEC5A8C204E753C00914C94 /* ImageCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewController.xib; sourceTree = "<group>"; };
 		B7D6A08094882A4AD1339306 /* Pods-FindIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindIt/Pods-FindIt.debug.xcconfig"; sourceTree = "<group>"; };
 		D7033FFB307F6BDBA4B8FA19 /* Pods_FindIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,17 +94,24 @@
 				8AE79391204D71A400BE7B1E /* Extensions.swift */,
 				8AE7938F204D70F000BE7B1E /* Constants.swift */,
 				8AE7938D204D708700BE7B1E /* PhotoModel.swift */,
+				8AE7939B204E425900BE7B1E /* CameraController.swift */,
 				8AE79389204D704200BE7B1E /* FlickrHandler.swift */,
 				8AE7938A204D704300BE7B1E /* NetworkManager.swift */,
 				8AE79373204D6D4100BE7B1E /* AppDelegate.swift */,
+				8AEC5A8C204E753C00914C94 /* ImageCollectionViewController.xib */,
 				8AE79375204D6D4100BE7B1E /* ImageCollectionViewController.swift */,
 				8AE79377204D6D4100BE7B1E /* Main.storyboard */,
 				8AE7937A204D6D4100BE7B1E /* Assets.xcassets */,
 				8AE7937C204D6D4100BE7B1E /* LaunchScreen.storyboard */,
 				8AE7937F204D6D4100BE7B1E /* Info.plist */,
 				8AE79385204D6E0B00BE7B1E /* ImageViewCollectionViewCell.swift */,
+				8AE79399204E423C00BE7B1E /* Resnet50.mlmodel */,
 				8AE79386204D6E0B00BE7B1E /* ImageViewCollectionViewCell.xib */,
 				8AE79393204D85BB00BE7B1E /* PhotoResult.swift */,
+				8AE7939D204E43F100BE7B1E /* SuggestionCell.swift */,
+				8AE7939E204E43F100BE7B1E /* SuggestionCell.xib */,
+				8AE793A1204E447300BE7B1E /* Suggestion.swift */,
+				8ABD8C43204E99EA00972D5D /* CoreDataStack.swift */,
 			);
 			path = FindIt;
 			sourceTree = "<group>";
@@ -176,7 +197,9 @@
 			files = (
 				8AE7937E204D6D4100BE7B1E /* LaunchScreen.storyboard in Resources */,
 				8AE79388204D6E0B00BE7B1E /* ImageViewCollectionViewCell.xib in Resources */,
+				8AE793A0204E43F100BE7B1E /* SuggestionCell.xib in Resources */,
 				8AE7937B204D6D4100BE7B1E /* Assets.xcassets in Resources */,
+				8AEC5A8D204E753C00914C94 /* ImageCollectionViewController.xib in Resources */,
 				8AE79379204D6D4100BE7B1E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,9 +265,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AE7939A204E423C00BE7B1E /* Resnet50.mlmodel in Sources */,
 				8AE7938E204D708700BE7B1E /* PhotoModel.swift in Sources */,
 				8AE79376204D6D4100BE7B1E /* ImageCollectionViewController.swift in Sources */,
+				8AE7939F204E43F100BE7B1E /* SuggestionCell.swift in Sources */,
+				8AE793A2204E447400BE7B1E /* Suggestion.swift in Sources */,
 				8AE79374204D6D4100BE7B1E /* AppDelegate.swift in Sources */,
+				8AE7939C204E425900BE7B1E /* CameraController.swift in Sources */,
+				8ABD8C44204E99EA00972D5D /* CoreDataStack.swift in Sources */,
 				8AE79392204D71A400BE7B1E /* Extensions.swift in Sources */,
 				8AE7938C204D704300BE7B1E /* NetworkManager.swift in Sources */,
 				8AE79390204D70F000BE7B1E /* Constants.swift in Sources */,

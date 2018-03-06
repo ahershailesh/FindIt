@@ -13,29 +13,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" id="gTV-IL-0wX" customClass="ImageViewCollectionViewCell" customModule="FindIt" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="249" height="425"/>
+            <rect key="frame" x="0.0" y="0.0" width="249" height="208"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="249" height="425"/>
+                <rect key="frame" x="0.0" y="0.0" width="249" height="208"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZTY-Sx-6ao">
-                        <rect key="frame" x="0.0" y="0.0" width="249" height="425"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_image" translatesAutoresizingMaskIntoConstraints="NO" id="47G-Ny-OQx">
+                        <rect key="frame" x="2" y="2" width="245" height="204"/>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="ZTY-Sx-6ao" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1g0-8k-rNc"/>
-                <constraint firstItem="ZTY-Sx-6ao" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7BX-bn-67w"/>
-                <constraint firstItem="ZTY-Sx-6ao" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailing" id="8Z1-Wn-naI"/>
-                <constraint firstAttribute="bottom" secondItem="ZTY-Sx-6ao" secondAttribute="bottom" id="Hek-a0-NjA"/>
+                <constraint firstItem="47G-Ny-OQx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="Qgl-rg-K7x"/>
+                <constraint firstAttribute="trailing" secondItem="47G-Ny-OQx" secondAttribute="trailing" constant="2" id="fe8-aL-X8D"/>
+                <constraint firstItem="47G-Ny-OQx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="shI-bx-pR9"/>
+                <constraint firstAttribute="bottom" secondItem="47G-Ny-OQx" secondAttribute="bottom" constant="2" id="tG9-YF-EGg"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="249" height="425"/>
+            <size key="customSize" width="249" height="208"/>
             <connections>
-                <outlet property="imageView" destination="ZTY-Sx-6ao" id="oiw-wb-IEt"/>
+                <outlet property="imageView" destination="47G-Ny-OQx" id="whx-sA-sGb"/>
             </connections>
-            <point key="canvasLocation" x="-19" y="1"/>
+            <point key="canvasLocation" x="-19.5" y="-108"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="no_image" width="225" height="225"/>
+    </resources>
 </document>
