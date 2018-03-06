@@ -17,8 +17,8 @@ class ImageCollectionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     private let numberOfSections = 1
-    private let LINE_SPACING : CGFloat = 8
-    private let ITEM_SPACING : CGFloat = 8
+    private let LINE_SPACING : CGFloat = 4
+    private let ITEM_SPACING : CGFloat = 4
     private let LEFT_PADDING : CGFloat = 8
     private let RIGHT_PADDING : CGFloat = 8
     private let CELL_HEIGHT : CGFloat = 100

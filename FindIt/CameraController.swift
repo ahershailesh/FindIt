@@ -21,7 +21,8 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
     var gradientLayer: CAGradientLayer!
     // vision request
     var visionRequests = [VNRequest]()
-    var suggestionArray = [Suggestion]()
+    private var suggestionArray = [Suggestion]()
+    private var localSuggestions = [Suggestion]()
     private let reuseIdentifier = "SuggestionCell"
     var recognitionThreshold : Float = 0
     @IBOutlet weak var collectionView: UICollectionView!
@@ -40,6 +41,9 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         self.collectionView.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         setupCollectionView()
         navigationController?.navigationBar.isHidden = false
+        
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.loadSuggestion), userInfo: nil, repeats: true)
+        
         // get hold of the default video camera
         guard let camera = AVCaptureDevice.default(for: .video) else {
             showAlert(message: "Camera functionality is not available", title: "Improtant")
@@ -165,17 +169,18 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
             return
         }
         
-        suggestionArray = observations[0...4] // top 4 results
+        localSuggestions = observations[0...4] // top 4 results
             .flatMap({ $0 as? VNClassificationObservation })
             .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
             .map({ Suggestion(title: $0.identifier, value: $0.confidence) })
-        
+    }
+    
+    @objc private func loadSuggestion() {
+        suggestionArray = localSuggestions
         DispatchQueue.main.async {
             self.reload()
         }
     }
-    
-    
 }
 
 // MARK:- UICollectionViewDataSource -
