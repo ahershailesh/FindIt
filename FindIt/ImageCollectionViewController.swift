@@ -38,7 +38,7 @@ class ImageCollectionViewController: UIViewController {
                 if success {
                     self.collectionView.reloadData()
                 } else {
-                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }

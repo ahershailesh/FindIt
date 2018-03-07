@@ -54,9 +54,6 @@ class PreviewImageViewController: UIViewController {
         activityController.completionWithItemsHandler = { [weak self] (_,completed,_, _) in
             if completed {
                 self?.notifier?.imageShared(model: self!.model!)
-                self?.showAlert(message: "Image shared successfully", title: "Important")
-            } else {
-                self?.showAlert(message: "Cannot able to save picture as it is not shared")
             }
         }
         present(activityController, animated: true, completion: nil)
