@@ -82,9 +82,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A6DD676205046F500E29989 /* ScreenShots */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ScreenShots;
+			sourceTree = "<group>";
+		};
 		8AE79367204D6D4100BE7B1E = {
 			isa = PBXGroup;
 			children = (
+				8A6DD676205046F500E29989 /* ScreenShots */,
 				8AE79372204D6D4100BE7B1E /* FindIt */,
 				8AE79371204D6D4100BE7B1E /* Products */,
 				F50B575B816FE46B2DE8425A /* Pods */,
