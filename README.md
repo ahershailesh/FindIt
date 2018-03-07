@@ -31,7 +31,7 @@ The build system uses [CocoaPods](https://cocoapods.org) to integrate dependenci
 2. Open Terminal and `cd` into project folder. Most of the times the path will be `~/Downloads/FindIt`.
 3. Run `pods install` to install dependencies.
 4. Open `FindIt.xcworkspace`, it will open in Xcode.
-5. Now, Open `Constants.swift` file and put the appropriate keys in it. You can find the keys using [this guide](TODO Add Guide Link).
+5. Now, Open `Constants.swift` file and put the appropriate keys in it. You can find the keys using [this guide](https://www.flickr.com/services/api/misc.api_keys.html)
 6. Download the Machine Learning model [Resnet50.mlmodel](https://docs-assets.developer.apple.com/coreml/models/Resnet50.mlmodel) and place it in `<RootProject>/FindIt` directory. _To avoid confusion: The model should be place along with the Swift files._
 7. Now you can build and run.
 
