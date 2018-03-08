@@ -61,8 +61,10 @@ class ImageCollectionViewController: UIViewController {
     }
     
     @objc func presentCamera() {
-       let controller = CameraController()
-        navigationController?.pushViewController(controller, animated: true)
+        if Constants.hasCameraAccess() {
+            let controller = CameraController()
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

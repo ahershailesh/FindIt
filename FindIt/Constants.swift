@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 //MARK:- Constant values
 class Constants: NSObject {
@@ -59,6 +60,26 @@ class Constants: NSObject {
             let randomNumber = Int(arc4random() % 11)
             return UIColor(hex: Color(rawValue: randomNumber)!.getString())
         }
+    }
+    
+    class func hasCameraAccess() -> Bool {
+        let mediaType = AVMediaType.video
+        let authStatus = AVCaptureDevice.authorizationStatus(for: mediaType)
+        
+        switch authStatus {
+        case .authorized:
+            return true
+        case .denied:
+            appDelegate.window?.rootViewController?.showAlert(message: "We are not authorised to use camera, please allow us to use camera from settings")
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { (status) in
+                
+            }
+        case .restricted:
+            appDelegate.window?.rootViewController?.showAlert(message: "Camera functionality is not available", title: "Improtant")
+        }
+        
+        return authStatus == .authorized
     }
 }
 
