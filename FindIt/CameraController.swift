@@ -50,6 +50,7 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         // get hold of the default video camera
         guard let camera = AVCaptureDevice.default(for: .video) else {
             showAlert(message: "Camera functionality is not available", title: "Improtant")
+            navigationController?.popViewController(animated: true)
             return
         }
         do {
@@ -100,8 +101,8 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        previewLayer.frame = previewView.bounds;
-        gradientLayer.frame = previewView.bounds;
+        previewLayer?.frame = previewView?.bounds ?? CGRect.zero
+        gradientLayer?.frame = previewView?.bounds ?? CGRect.zero
         
         let orientation: UIDeviceOrientation = UIDevice.current.orientation;
         switch (orientation) {
