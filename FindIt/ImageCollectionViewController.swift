@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 class ImageCollectionViewController: UIViewController {
     
@@ -62,8 +63,12 @@ class ImageCollectionViewController: UIViewController {
     
     @objc func presentCamera() {
         if Constants.hasCameraAccess() {
-            let controller = CameraController()
-            navigationController?.pushViewController(controller, animated: true)
+            if let _ = AVCaptureDevice.default(for: .video) {
+                let controller = CameraController()
+                navigationController?.pushViewController(controller, animated: true)
+            } else {
+                showAlert(message: "Camera is not available")
+            }
         }
     }
     
