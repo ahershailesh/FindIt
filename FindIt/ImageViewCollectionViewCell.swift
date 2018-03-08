@@ -10,11 +10,13 @@ import UIKit
 import Kingfisher
 
 class ImageViewCollectionViewCell: UICollectionViewCell, Placeholder {
-
+    @IBOutlet weak var progressIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var imageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.backgroundColor = UIColor.white
+        progressIndicator.isHidden = true
     }
     
     @IBOutlet weak var selectedIndicatorImage: UIImageView!
@@ -86,12 +88,18 @@ class ImageViewCollectionViewCell: UICollectionViewCell, Placeholder {
     }
     
     func add(to imageView: ImageView) {
+        progressIndicator.isHidden = false
         imageView.image = UIImage(named: "no_image")
     }
     
     /// How the placeholder should be removed from a given image view.
     func remove(from imageView: ImageView) {
         imageView.image = nil
+        progressIndicator.isHidden = true
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        progressIndicator.isHidden = true
+    }
 }
