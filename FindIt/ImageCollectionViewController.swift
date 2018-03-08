@@ -73,10 +73,7 @@ class ImageCollectionViewController: UIViewController {
         dataHandler?.refreshSavedData()
         collectionView.reloadData()
         navigationController?.setToolbarHidden(true, animated: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        navigationItem.leftBarButtonItem?.isEnabled = !(dataHandler?.savedImageIds.isEmpty ?? true)
     }
     
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -167,14 +164,7 @@ extension ImageCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as? ImageViewCollectionViewCell
         let id = cell?.photoModel?.id ?? cell?.savedModel?.id
-        if dataHandler!.mode == .savedCollection,
-            let thisId = id,
-            let image = cell?.imageView.image,
-            let imageData = UIImagePNGRepresentation(image) {
-            navigationItem.leftBarButtonItem?.isEnabled = true
-            let status = dataHandler!.selectImage(id: thisId, imageData: imageData as NSData, keyword: title!)
-            setSelection(onCell: cell, selection: status)
-        } else if let image = cell?.imageView.image {
+            if let image = cell?.imageView.image {
             var model = PreviewModel()
             model.id = id
             model.image = image

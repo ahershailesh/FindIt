@@ -25,12 +25,12 @@ class FlickrHandler: NetworkManager {
     private let offset = 10
     private var prefetchingStatus = false
     private var savedImages = [SavedImage]()
-    private var savedImageIds = [String]()
+    var savedImageIds = [String]()
     
     init(mode : ImageCollectionViewController.ImageCollectionViewMode) {
         self.mode = mode
         super.init()
-        self.delegate = self
+        delegate = self
         setupSavedImageDataSource()
     }
     
@@ -82,7 +82,9 @@ class FlickrHandler: NetworkManager {
         var status = false
         if let index = savedImageIds.index(of: id), index < savedImageIds.count {
             savedImageIds.remove(at: index)
-            appDelegate.coreDataStack.context?.delete(savedImages[index])
+            if mode != .savedCollection {
+                appDelegate.coreDataStack.context?.delete(savedImages[index])
+            }
             if savedImageIds.isEmpty {
                 notifier?.selectedContentsEmptied?()
             }

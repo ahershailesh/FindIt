@@ -101,5 +101,6 @@ class ImageViewCollectionViewCell: UICollectionViewCell, Placeholder {
     override func prepareForReuse() {
         super.prepareForReuse()
         progressIndicator.isHidden = true
+        imageView.image = UIImage(named: "no_image")
     }
 }

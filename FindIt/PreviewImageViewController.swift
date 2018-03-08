@@ -34,9 +34,9 @@ class PreviewImageViewController: UIViewController {
         imageView.image = model?.image
     }
     
-    func setupToolBar() {
+    private func setupToolBar() {
         navigationController?.setToolbarHidden(false, animated: true)
-        let imageName = selection ? "hearts_24" : "heart_blank"
+        let imageName = selection ? "ic_check_circle_white_36pt" : "ic_check_white_36pt"
         let likeButton = UIBarButtonItem(image: UIImage(named: imageName), style: .plain, target: self, action: #selector(likeButtonTapped))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let share = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped))
