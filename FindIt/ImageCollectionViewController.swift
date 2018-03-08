@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 class ImageCollectionViewController: UIViewController {
     
@@ -61,7 +62,11 @@ class ImageCollectionViewController: UIViewController {
     }
     
     @objc func presentCamera() {
-       let controller = CameraController()
+        if AVCaptureDevice.devices().isEmpty {
+            showAlert(message: "This device has no camera support, please run this on iphone/ipad")
+            return
+        }
+        let controller = CameraController()
         navigationController?.pushViewController(controller, animated: true)
     }
     
