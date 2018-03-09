@@ -111,7 +111,30 @@ class ImageCollectionViewController: UIViewController {
             navigationItem.rightBarButtonItem = cameraButton
         }
         dataHandler!.notifier = self
+        
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(longPressRecongnizer))
+        lpgr.delaysTouchesBegan = true
+        self.collectionView.addGestureRecognizer(lpgr)
     }
+    
+    
+    @objc func longPressRecongnizer(gestureRecognizer: UILongPressGestureRecognizer) {
+        if gestureRecognizer.state != .ended {
+            return
+        }
+        let touchPoint = gestureRecognizer.location(in: self.collectionView)
+        if let indexPath = collectionView.indexPathForItem(at: touchPoint),
+            let cell = collectionView.cellForItem(at:  indexPath) as? ImageViewCollectionViewCell,
+            let model = cell.savedModel,
+            let id = model.id,
+            let image = cell.imageView?.image,
+            //dataHandler!.mode == .savedCollection
+            let imageData = UIImagePNGRepresentation(image) {
+                let status = dataHandler!.selectImage(id: id, imageData: imageData as NSData, keyword: title!)
+                setSelection(onCell: cell, selection: status)
+                navigationItem.leftBarButtonItem?.isEnabled = !(dataHandler?.savedImageIds.isEmpty ?? true)
+            }
+        }
     
     private func getItemSize() -> CGSize {
         let deviceWidth = UIScreen.main.bounds.width  - LEFT_PADDING - RIGHT_PADDING
