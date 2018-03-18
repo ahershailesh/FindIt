@@ -11,9 +11,10 @@ import AVFoundation
 import Vision
 
 class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var previewView: UIView!
+    @IBOutlet weak var backButton: UIButton!
     
+    // MARK:- Suggestion related stuff
     private var suggestionHandler = SuggestionDataHandler()
     private var localSuggestions = [Suggestion]()
     private let reuseIdentifier = "SuggestionCell"
@@ -22,24 +23,20 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
     private var swipeView = UIView(frame: .zero)
     
     enum SuggestionListStatus {
-        case fullScreen, halfScreen, midWay
+        case fullScreen, halfScreen
     }
     
-    private var listStatus : SuggestionListStatus = .halfScreen
     
-    // video capture session
-    private let session = AVCaptureSession()
-    // preview layer
-    private var previewLayer: AVCaptureVideoPreviewLayer!
-    // queue for processing video frames
-    private let captureQueue = DispatchQueue(label: "captureQueue")
-    // overlay layer
-    private var gradientLayer: CAGradientLayer!
-    // vision request
-    private var visionRequests = [VNRequest]()
-    
+    // MARK:- Camera related stuff
+    private let session = AVCaptureSession() // video capture session
+    private var previewLayer: AVCaptureVideoPreviewLayer! // preview layer
+    private let captureQueue = DispatchQueue(label: "captureQueue") // queue for processing video frames
+    private var gradientLayer: CAGradientLayer! // overlay layer
+    private var visionRequests = [VNRequest]()  // vision request
     private var recognitionThreshold : Float = 0
     
+    
+    // MARK:- Initialization
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         suggestionController = SuggestionListController()
         super.init(nibName: nil, bundle: nil)
@@ -54,16 +51,40 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         super.init(coder: aDecoder)
     }
     
-    
+    // MARK:- View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.hidesBarsOnSwipe = true
-        
+        navigationController?.navigationBar.isHidden = true
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.loadSuggestion), userInfo: nil, repeats: true)
         
         setupCameraView()
         setupSuggestionTableView()
+        setupButtons()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        previewLayer?.frame = previewView?.bounds ?? CGRect.zero
+        gradientLayer?.frame = previewView?.bounds ?? CGRect.zero
+        
+        let orientation: UIDeviceOrientation = UIDevice.current.orientation;
+        switch (orientation) {
+        case .portrait:
+            previewLayer?.connection?.videoOrientation = .portrait
+        case .landscapeRight:
+            previewLayer?.connection?.videoOrientation = .landscapeLeft
+        case .landscapeLeft:
+            previewLayer?.connection?.videoOrientation = .landscapeRight
+        case .portraitUpsideDown:
+            previewLayer?.connection?.videoOrientation = .portraitUpsideDown
+        default:
+            previewLayer?.connection?.videoOrientation = .portrait
+        }
+    }
+    
+    // MARK:- Private methods
+    private func setupButtons() {
+        backButton.layer.cornerRadius = backButton.frame.width/2
     }
     
     private func setupSuggestionTableView() {
@@ -71,10 +92,6 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         suggestionController.dataHandler = suggestionHandler
         suggestionController.view.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height)
         
-        let paddingView = UIView(frame: .zero)
-        paddingView.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height/2)
-        paddingView.backgroundColor = .clear
-        suggestionController.tableView.tableHeaderView = paddingView
         addChildViewController(suggestionController)
         view.addSubview(suggestionController.view)
     }
@@ -132,27 +149,7 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        previewLayer?.frame = previewView?.bounds ?? CGRect.zero
-        gradientLayer?.frame = previewView?.bounds ?? CGRect.zero
-        
-        let orientation: UIDeviceOrientation = UIDevice.current.orientation;
-        switch (orientation) {
-        case .portrait:
-            previewLayer?.connection?.videoOrientation = .portrait
-        case .landscapeRight:
-            previewLayer?.connection?.videoOrientation = .landscapeLeft
-        case .landscapeLeft:
-            previewLayer?.connection?.videoOrientation = .landscapeRight
-        case .portraitUpsideDown:
-            previewLayer?.connection?.videoOrientation = .portraitUpsideDown
-        default:
-            previewLayer?.connection?.videoOrientation = .portrait
-        }
-    }
-    
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    internal func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
@@ -195,7 +192,15 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
     }
 }
 
+// MARK: - SuggestionCallBacks
 extension CameraController : SuggestionCallBacks {
+    func getTableHeaderView() -> UIView? {
+        let paddingView = UIView(frame: .zero)
+        paddingView.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height/2 - 60)
+        paddingView.backgroundColor = .clear
+        return paddingView
+    }
+    
     func shouldShowHeader(forPage page: Int) -> Bool {
         return page == 0 ? false : true
     }
@@ -204,10 +209,20 @@ extension CameraController : SuggestionCallBacks {
         return true
     }
     
-    func tableViewScrolled(scrollView: UIScrollView)
+    func tableViewScrolled(scrollView: UIScrollView) {
+        var scrollPos = scrollView.contentOffset.y
+        scrollPos = scrollPos > view.frame.height ? view.frame.height   : scrollPos
+        scrollPos = scrollPos < 0   ? 0  : scrollPos
+        let visibility : CGFloat =  scrollPos / view.frame.height
+        //Max alpha has to be 50%
+        UIView.animate(withDuration: 0.2, animations: {
+            let color = UIColor(red: 0, green: 0, blue: 0, alpha: visibility/1.5)
+            self.suggestionController.view.backgroundColor = color
+        })
     }
 }
 
+// MARK: - UIGestureRecognizerDelegate
 extension CameraController : UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true

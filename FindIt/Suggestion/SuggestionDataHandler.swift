@@ -63,6 +63,7 @@ protocol SuggestionNotifier {
     func shouldSelect(suggestion: Suggestion, indexPath: IndexPath) -> Bool
     func shouldShowHeader(forPage page: Int) -> Bool
     func tableViewScrolled(scrollView: UIScrollView)
+    func getTableHeaderView() -> UIView?
 }
 
 protocol SuggestionErrorProtocol {
@@ -144,5 +145,9 @@ extension SuggestionDataHandler : SuggestionCallBacks {
     
     func tableViewScrolled(scrollView: UIScrollView) {
         callBack?.tableViewScrolled(scrollView: scrollView)
+    }
+    
+    func getTableHeaderView() -> UIView? {
+        return callBack?.getTableHeaderView()
     }
 }

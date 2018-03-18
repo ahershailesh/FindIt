@@ -40,7 +40,8 @@ class SuggestionListController: UIViewController {
         registerCells()
         tableView.dataSource = self
         tableView.delegate = self
-        
+        tableView.showsVerticalScrollIndicator = false
+        tableView.tableHeaderView = dataHandler?.getTableHeaderView()
     }
     
     private func registerCells() {
@@ -86,10 +87,6 @@ extension SuggestionListController : UITableViewDelegate {
                 
             }
         }
-    }
-    
-    func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

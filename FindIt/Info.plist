@@ -42,5 +42,7 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow us to use camera to identify objects</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>
