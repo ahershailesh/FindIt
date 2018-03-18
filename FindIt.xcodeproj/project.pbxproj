@@ -14,6 +14,13 @@
 		8A809BED204F0C590019E75D /* PreviewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A809BEB204F0C590019E75D /* PreviewImageViewController.swift */; };
 		8A809BEE204F0C590019E75D /* PreviewImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A809BEC204F0C590019E75D /* PreviewImageViewController.xib */; };
 		8A809BF0204F133F0019E75D /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A809BEF204F133F0019E75D /* PreviewModel.swift */; };
+		8AB85EF6205CD2F000107A29 /* SuggestionListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB85EF4205CD2F000107A29 /* SuggestionListController.xib */; };
+		8AB85EF8205CD37700107A29 /* SuggestionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB85EF7205CD37700107A29 /* SuggestionListController.swift */; };
+		8AB85EFB205CD48100107A29 /* SuggestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB85EF9205CD48100107A29 /* SuggestionTableViewCell.swift */; };
+		8AB85EFC205CD48100107A29 /* SuggestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB85EFA205CD48100107A29 /* SuggestionTableViewCell.xib */; };
+		8AB85EFE205CE46000107A29 /* SuggestionDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB85EFD205CE46000107A29 /* SuggestionDataHandler.swift */; };
+		8AB8FA5C205D6B6B00B4ABDD /* SuggestionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8FA5B205D6B6B00B4ABDD /* SuggestionHeaderView.swift */; };
+		8AB8FA60205D859D00B4ABDD /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8FA5F205D859D00B4ABDD /* CameraController.swift */; };
 		8ABD8C44204E99EA00972D5D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD8C43204E99EA00972D5D /* CoreDataStack.swift */; };
 		8ABD8C5B204EAFC100972D5D /* Images.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD8C45204E9A8D00972D5D /* Images.xcdatamodeld */; };
 		8AD84C6A204ED8E800368FD6 /* CameraController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD84C69204ED8E800368FD6 /* CameraController.xib */; };
@@ -32,7 +39,6 @@
 		8AE79392204D71A400BE7B1E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79391204D71A400BE7B1E /* Extensions.swift */; };
 		8AE79394204D85BB00BE7B1E /* PhotoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79393204D85BB00BE7B1E /* PhotoResult.swift */; };
 		8AE7939A204E423C00BE7B1E /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8AE79399204E423C00BE7B1E /* Resnet50.mlmodel */; };
-		8AE7939C204E425900BE7B1E /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7939B204E425900BE7B1E /* CameraController.swift */; };
 		8AE7939F204E43F100BE7B1E /* SuggestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7939D204E43F100BE7B1E /* SuggestionCell.swift */; };
 		8AE793A0204E43F100BE7B1E /* SuggestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AE7939E204E43F100BE7B1E /* SuggestionCell.xib */; };
 		8AE793A2204E447400BE7B1E /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE793A1204E447300BE7B1E /* Suggestion.swift */; };
@@ -47,6 +53,13 @@
 		8A809BEB204F0C590019E75D /* PreviewImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageViewController.swift; sourceTree = "<group>"; };
 		8A809BEC204F0C590019E75D /* PreviewImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewImageViewController.xib; sourceTree = "<group>"; };
 		8A809BEF204F133F0019E75D /* PreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModel.swift; sourceTree = "<group>"; };
+		8AB85EF4205CD2F000107A29 /* SuggestionListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionListController.xib; sourceTree = "<group>"; };
+		8AB85EF7205CD37700107A29 /* SuggestionListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionListController.swift; sourceTree = "<group>"; };
+		8AB85EF9205CD48100107A29 /* SuggestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionTableViewCell.swift; sourceTree = "<group>"; };
+		8AB85EFA205CD48100107A29 /* SuggestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionTableViewCell.xib; sourceTree = "<group>"; };
+		8AB85EFD205CE46000107A29 /* SuggestionDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionDataHandler.swift; sourceTree = "<group>"; };
+		8AB8FA5B205D6B6B00B4ABDD /* SuggestionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionHeaderView.swift; sourceTree = "<group>"; };
+		8AB8FA5F205D859D00B4ABDD /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		8ABD8C43204E99EA00972D5D /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8ABD8C46204E9A8D00972D5D /* Images.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Images.xcdatamodel; sourceTree = "<group>"; };
 		8AD84C69204ED8E800368FD6 /* CameraController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraController.xib; sourceTree = "<group>"; };
@@ -98,6 +111,19 @@
 			path = Screenshots;
 			sourceTree = "<group>";
 		};
+		8AB85EEE205CCF0A00107A29 /* Suggestion */ = {
+			isa = PBXGroup;
+			children = (
+				8AB85EF4205CD2F000107A29 /* SuggestionListController.xib */,
+				8AB85EF7205CD37700107A29 /* SuggestionListController.swift */,
+				8AB85EF9205CD48100107A29 /* SuggestionTableViewCell.swift */,
+				8AB85EFA205CD48100107A29 /* SuggestionTableViewCell.xib */,
+				8AB85EFD205CE46000107A29 /* SuggestionDataHandler.swift */,
+				8AB8FA5B205D6B6B00B4ABDD /* SuggestionHeaderView.swift */,
+			);
+			path = Suggestion;
+			sourceTree = "<group>";
+		};
 		8AE79367204D6D4100BE7B1E = {
 			isa = PBXGroup;
 			children = (
@@ -120,12 +146,14 @@
 		8AE79372204D6D4100BE7B1E /* FindIt */ = {
 			isa = PBXGroup;
 			children = (
+				8AB85EEE205CCF0A00107A29 /* Suggestion */,
 				8AE5C7552050ED7300B67704 /* SavedImage+CoreDataClass.swift */,
 				8AE5C7542050ED7200B67704 /* SavedImage+CoreDataProperties.swift */,
 				8AE79391204D71A400BE7B1E /* Extensions.swift */,
 				8AE7938F204D70F000BE7B1E /* Constants.swift */,
 				8AE7938D204D708700BE7B1E /* PhotoModel.swift */,
 				8AE7939B204E425900BE7B1E /* CameraController.swift */,
+				8AB8FA5F205D859D00B4ABDD /* CameraController.swift */,
 				8AE79389204D704200BE7B1E /* FlickrHandler.swift */,
 				8AE7938A204D704300BE7B1E /* NetworkManager.swift */,
 				8AE79373204D6D4100BE7B1E /* AppDelegate.swift */,
@@ -233,8 +261,10 @@
 				8AE7937E204D6D4100BE7B1E /* LaunchScreen.storyboard in Resources */,
 				8AE79388204D6E0B00BE7B1E /* ImageViewCollectionViewCell.xib in Resources */,
 				8A6DD67B2050488900E29989 /* HomeScreen.png in Resources */,
+				8AB85EFC205CD48100107A29 /* SuggestionTableViewCell.xib in Resources */,
 				8AE793A0204E43F100BE7B1E /* SuggestionCell.xib in Resources */,
 				8A6DD67C2050488900E29989 /* PhotosScreen.png in Resources */,
+				8AB85EF6205CD2F000107A29 /* SuggestionListController.xib in Resources */,
 				8AE7937B204D6D4100BE7B1E /* Assets.xcassets in Resources */,
 				8AD84C6A204ED8E800368FD6 /* CameraController.xib in Resources */,
 				8A809BEE204F0C590019E75D /* PreviewImageViewController.xib in Resources */,
@@ -305,21 +335,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A809BF0204F133F0019E75D /* PreviewModel.swift in Sources */,
+				8AB85EF8205CD37700107A29 /* SuggestionListController.swift in Sources */,
 				8AE7939A204E423C00BE7B1E /* Resnet50.mlmodel in Sources */,
 				8ABD8C5B204EAFC100972D5D /* Images.xcdatamodeld in Sources */,
+				8AB8FA5C205D6B6B00B4ABDD /* SuggestionHeaderView.swift in Sources */,
 				8AE7938E204D708700BE7B1E /* PhotoModel.swift in Sources */,
+				8AB8FA60205D859D00B4ABDD /* CameraController.swift in Sources */,
 				8A809BED204F0C590019E75D /* PreviewImageViewController.swift in Sources */,
 				8AE79376204D6D4100BE7B1E /* ImageCollectionViewController.swift in Sources */,
 				8AE7939F204E43F100BE7B1E /* SuggestionCell.swift in Sources */,
 				8AE5C7572050ED7300B67704 /* SavedImage+CoreDataClass.swift in Sources */,
 				8AE793A2204E447400BE7B1E /* Suggestion.swift in Sources */,
 				8AE79374204D6D4100BE7B1E /* AppDelegate.swift in Sources */,
-				8AE7939C204E425900BE7B1E /* CameraController.swift in Sources */,
+				8AB85EFE205CE46000107A29 /* SuggestionDataHandler.swift in Sources */,
 				8ABD8C44204E99EA00972D5D /* CoreDataStack.swift in Sources */,
 				8AE5C7562050ED7300B67704 /* SavedImage+CoreDataProperties.swift in Sources */,
 				8AE79392204D71A400BE7B1E /* Extensions.swift in Sources */,
 				8AE7938C204D704300BE7B1E /* NetworkManager.swift in Sources */,
 				8AE79390204D70F000BE7B1E /* Constants.swift in Sources */,
+				8AB85EFB205CD48100107A29 /* SuggestionTableViewCell.swift in Sources */,
 				8AE79394204D85BB00BE7B1E /* PhotoResult.swift in Sources */,
 				8AE79387204D6E0B00BE7B1E /* ImageViewCollectionViewCell.swift in Sources */,
 				8AE7938B204D704300BE7B1E /* FlickrHandler.swift in Sources */,

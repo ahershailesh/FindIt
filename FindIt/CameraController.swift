@@ -14,39 +14,72 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var previewView: UIView!
     
-    private var suggestionArray = [Suggestion]()
+    private var suggestionHandler = SuggestionDataHandler()
     private var localSuggestions = [Suggestion]()
     private let reuseIdentifier = "SuggestionCell"
+    private let suggestionController : SuggestionListController
+    private var gesture : UIPanGestureRecognizer?
+    private var swipeView = UIView(frame: .zero)
+    
+    enum SuggestionListStatus {
+        case fullScreen, halfScreen, midWay
+    }
+    
+    private var listStatus : SuggestionListStatus = .halfScreen
     
     // video capture session
-    let session = AVCaptureSession()
+    private let session = AVCaptureSession()
     // preview layer
-    var previewLayer: AVCaptureVideoPreviewLayer!
+    private var previewLayer: AVCaptureVideoPreviewLayer!
     // queue for processing video frames
-    let captureQueue = DispatchQueue(label: "captureQueue")
+    private let captureQueue = DispatchQueue(label: "captureQueue")
     // overlay layer
-    var gradientLayer: CAGradientLayer!
+    private var gradientLayer: CAGradientLayer!
     // vision request
-    var visionRequests = [VNRequest]()
+    private var visionRequests = [VNRequest]()
     
-    var recognitionThreshold : Float = 0
+    private var recognitionThreshold : Float = 0
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        suggestionController = SuggestionListController()
+        super.init(nibName: nil, bundle: nil)
+    }
     
     convenience init() {
         self.init(nibName: nil, bundle: nil)
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        suggestionController = SuggestionListController()
+        super.init(coder: aDecoder)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-        setupCollectionView()
         navigationController?.navigationBar.isHidden = false
+        navigationController?.hidesBarsOnSwipe = true
         
-        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.loadSuggestion), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.loadSuggestion), userInfo: nil, repeats: true)
         
+        setupCameraView()
+        setupSuggestionTableView()
+    }
+    
+    private func setupSuggestionTableView() {
+        suggestionHandler.callBack = self
+        suggestionController.dataHandler = suggestionHandler
+        suggestionController.view.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height)
+        
+        let paddingView = UIView(frame: .zero)
+        paddingView.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height/2)
+        paddingView.backgroundColor = .clear
+        suggestionController.tableView.tableHeaderView = paddingView
+        addChildViewController(suggestionController)
+        view.addSubview(suggestionController.view)
+    }
+
+    private func setupCameraView() {
         // get hold of the default video camera
         guard let camera = AVCaptureDevice.default(for: .video) else {
             showAlert(message: "Camera functionality is not available", title: "Improtant")
@@ -119,28 +152,6 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         }
     }
     
-    private func setupCollectionView() {
-        collectionView.register(UINib(nibName: "SuggestionCell", bundle: nil), forCellWithReuseIdentifier: "SuggestionCell")
-        collectionView.dataSource = self
-        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name.UIContentSizeCategoryDidChange, object: nil)
-        setEstimatedSizeIfNeeded()
-    }
-    
-    private func setEstimatedSizeIfNeeded() {
-        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            let estimatedWidth : CGFloat = 30
-            if flowLayout.estimatedItemSize.width != estimatedWidth {
-                flowLayout.estimatedItemSize = CGSize(width: estimatedWidth,height: 30)
-                flowLayout.invalidateLayout()
-            }
-        }
-    }
-    
-    @objc private func reload() {
-        setEstimatedSizeIfNeeded()
-        collectionView.reloadData()
-    }
-    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
@@ -174,41 +185,31 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         }
         
         localSuggestions = observations[0...4] // top 4 results
-            .flatMap({ $0 as? VNClassificationObservation })
-            .flatMap({$0.confidence > recognitionThreshold ? $0 : nil})
+            .compactMap({ $0 as? VNClassificationObservation })
+            .compactMap({$0.confidence > recognitionThreshold ? $0 : nil})
             .map({ Suggestion(title: $0.identifier, value: $0.confidence) })
     }
     
     @objc private func loadSuggestion() {
-        suggestionArray = localSuggestions
-        DispatchQueue.main.async {
-            self.reload()
-        }
+        suggestionHandler.addSuggestions(suggestions: localSuggestions)
     }
 }
 
-// MARK:- UICollectionViewDataSource -
-extension CameraController : UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return suggestionArray.count
+extension CameraController : SuggestionCallBacks {
+    func shouldShowHeader(forPage page: Int) -> Bool {
+        return page == 0 ? false : true
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? SuggestionCell, let title = suggestionArray[indexPath.row].title{
-            cell.textLabel.text = title
-            return cell
-        }
-        return UICollectionViewCell()
+    func shouldSelect(suggestion: Suggestion, indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableViewScrolled(scrollView: UIScrollView)
     }
 }
 
-extension CameraController : UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let keyWord = suggestionArray[indexPath.row].title {
-            let controller = ImageCollectionViewController(keyWord: keyWord)
-            navigationController?.pushViewController(controller, animated: true)
-            
-        }
+extension CameraController : UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
-
