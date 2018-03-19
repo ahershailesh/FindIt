@@ -26,6 +26,13 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         case fullScreen, halfScreen
     }
     
+    private var listStatus : SuggestionListStatus = .halfScreen
+    private var maxScrollHeight : CGFloat = 300.0
+    private var buttonSize = CGSize(width: 48, height: 48)
+    private var maxButtonX = UIScreen.main.bounds.width - 48 - 16
+    private var leftFrame = CGRect(origin: CGPoint(x: 16, y: 32), size:  CGSize(width: 48, height: 48))
+    private var rightFrame = CGRect(origin: CGPoint(x: UIScreen.main.bounds.width - 48 - 16, y: 32), size:  CGSize(width: 48, height: 48))
+    
     
     // MARK:- Camera related stuff
     private let session = AVCaptureSession() // video capture session
@@ -85,6 +92,11 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
     // MARK:- Private methods
     private func setupButtons() {
         backButton.layer.cornerRadius = backButton.frame.width/2
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func backButtonTapped() {
+        self.backButton.imageView?.transform =  CGAffineTransform(rotationAngle: CGFloat.pi/2)
     }
     
     private func setupSuggestionTableView() {
@@ -93,9 +105,9 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         suggestionController.view.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height)
         
         addChildViewController(suggestionController)
-        view.addSubview(suggestionController.view)
+        view.insertSubview(suggestionController.view, belowSubview: backButton)
     }
-
+    
     private func setupCameraView() {
         // get hold of the default video camera
         guard let camera = AVCaptureDevice.default(for: .video) else {
@@ -110,7 +122,7 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
             // add a slight gradient overlay so we can read the results easily
             gradientLayer = CAGradientLayer()
             gradientLayer.colors = [
-                UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor,
+                UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.0).cgColor,
                 UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.0).cgColor,
             ]
             gradientLayer.locations = [0.0, 0.3]
@@ -190,6 +202,32 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
     @objc private func loadSuggestion() {
         suggestionHandler.addSuggestions(suggestions: localSuggestions)
     }
+    
+    private func changeUI(withCurrentScrollPosition position: CGFloat) {
+        var percentShift : CGFloat = 0
+        if position > 0 {
+            percentShift = 1
+            if position <= maxScrollHeight {
+                percentShift = CGFloat(position / maxScrollHeight)
+                let buttonX = CGFloat(maxButtonX - 16) * percentShift + 16
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.backButton.frame = CGRect(origin: CGPoint(x: buttonX, y: 32), size: self.buttonSize)
+                    let angle = percentShift * (CGFloat.pi/(-2))
+                    self.backButton.transform =  CGAffineTransform(rotationAngle: angle)
+                })
+            } else {
+                self.backButton.frame = rightFrame
+                self.backButton.transform =  CGAffineTransform(rotationAngle: (-1)*CGFloat.pi/2)
+            }
+        } else {
+            self.backButton.frame = leftFrame
+            self.backButton.transform =  CGAffineTransform(rotationAngle: 0)
+        }
+        UIView.animate(withDuration: 0.1, animations: {
+            let color = UIColor(red: 0, green: 0, blue: 0, alpha: percentShift/2)
+            self.suggestionController.view.backgroundColor = color
+        })
+    }
 }
 
 // MARK: - SuggestionCallBacks
@@ -210,15 +248,8 @@ extension CameraController : SuggestionCallBacks {
     }
     
     func tableViewScrolled(scrollView: UIScrollView) {
-        var scrollPos = scrollView.contentOffset.y
-        scrollPos = scrollPos > view.frame.height ? view.frame.height   : scrollPos
-        scrollPos = scrollPos < 0   ? 0  : scrollPos
-        let visibility : CGFloat =  scrollPos / view.frame.height
-        //Max alpha has to be 50%
-        UIView.animate(withDuration: 0.2, animations: {
-            let color = UIColor(red: 0, green: 0, blue: 0, alpha: visibility/1.5)
-            self.suggestionController.view.backgroundColor = color
-        })
+        changeUI(withCurrentScrollPosition: scrollView.contentOffset.y)
+        
     }
 }
 
