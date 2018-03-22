@@ -32,7 +32,9 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
     private var maxButtonX = UIScreen.main.bounds.width - 48 - 16
     private var leftFrame = CGRect(origin: CGPoint(x: 16, y: 32), size:  CGSize(width: 48, height: 48))
     private var rightFrame = CGRect(origin: CGPoint(x: UIScreen.main.bounds.width - 48 - 16, y: 32), size:  CGSize(width: 48, height: 48))
-    
+    private var paddingViewHeight : CGFloat {
+        return view.frame.height/2 - 60
+    }
     
     // MARK:- Camera related stuff
     private let session = AVCaptureSession() // video capture session
@@ -96,7 +98,13 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
     }
     
     @objc func backButtonTapped() {
-        self.backButton.imageView?.transform =  CGAffineTransform(rotationAngle: CGFloat.pi/2)
+        switch listStatus {
+        case .fullScreen : suggestionHandler.showTopSuggestions(); return
+        case .halfScreen :
+            navigationController?.popViewController(animated: true)
+            setBackbuttonToLeft()
+            return
+        }
     }
     
     private func setupSuggestionTableView() {
@@ -165,15 +173,15 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
-        
+
         connection.videoOrientation = .portrait
-        
+
         var requestOptions:[VNImageOption: Any] = [:]
-        
+
         if let cameraIntrinsicData = CMGetAttachment(sampleBuffer, kCMSampleBufferAttachmentKey_CameraIntrinsicMatrix, nil) {
-            requestOptions = [.cameraIntrinsics: cameraIntrinsicData]
+            requestOptions = [.cameraIntrinsics: cameraIntrinsicData,]
         }
-        
+
         // for orientation see kCGImagePropertyOrientation
         let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .upMirrored, options: requestOptions)
         do {
@@ -216,17 +224,27 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
                     self.backButton.transform =  CGAffineTransform(rotationAngle: angle)
                 })
             } else {
-                self.backButton.frame = rightFrame
-                self.backButton.transform =  CGAffineTransform(rotationAngle: (-1)*CGFloat.pi/2)
+                setBackbuttonToRight()
             }
         } else {
-            self.backButton.frame = leftFrame
-            self.backButton.transform =  CGAffineTransform(rotationAngle: 0)
+            setBackbuttonToLeft()
         }
         UIView.animate(withDuration: 0.1, animations: {
             let color = UIColor(red: 0, green: 0, blue: 0, alpha: percentShift/2)
             self.suggestionController.view.backgroundColor = color
         })
+    }
+    
+    private func setBackbuttonToLeft() {
+        backButton.frame = leftFrame
+        backButton.transform =  CGAffineTransform(rotationAngle: 0)
+        listStatus = .halfScreen
+    }
+    
+    private func setBackbuttonToRight() {
+        backButton.frame = rightFrame
+        backButton.transform =  CGAffineTransform(rotationAngle: (-1)*CGFloat.pi/2)
+        listStatus = .fullScreen
     }
 }
 
@@ -234,7 +252,7 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
 extension CameraController : SuggestionCallBacks {
     func getTableHeaderView() -> UIView? {
         let paddingView = UIView(frame: .zero)
-        paddingView.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height/2 - 60)
+        paddingView.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: paddingViewHeight)
         paddingView.backgroundColor = .clear
         return paddingView
     }
@@ -249,7 +267,13 @@ extension CameraController : SuggestionCallBacks {
     
     func tableViewScrolled(scrollView: UIScrollView) {
         changeUI(withCurrentScrollPosition: scrollView.contentOffset.y)
-        
+    }
+    
+    func didSelected(suggestion: Suggestion, atIndexPath indexPath: IndexPath) {
+        if let keyWord = suggestion.title {
+            let controller = ImageCollectionViewController(keyWord: keyWord)
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }
 

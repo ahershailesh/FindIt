@@ -44,6 +44,7 @@ protocol SuggestionDataSource {
 protocol SuggestionNotifier {
     /// if data handler got new suggestions or deleted some of the data, or just wanted to make changes in data shown to the user, handler will call this method
     func refreshSuggestions()
+    func showTopSuggestions()
 }
 
 /*
@@ -61,6 +62,7 @@ protocol SuggestionNotifier {
     ///   - indexPath: indexPath for selected Item
     /// - Returns: permission for further action.
     func shouldSelect(suggestion: Suggestion, indexPath: IndexPath) -> Bool
+    func didSelected(suggestion: Suggestion, atIndexPath indexPath: IndexPath)
     func shouldShowHeader(forPage page: Int) -> Bool
     func tableViewScrolled(scrollView: UIScrollView)
     func getTableHeaderView() -> UIView?
@@ -108,6 +110,10 @@ class SuggestionDataHandler: NSObject {
         }
         notifier?.refreshSuggestions()
     }
+    
+    func showTopSuggestions() {
+        notifier?.showTopSuggestions()
+    }
 }
 
 /*
@@ -149,5 +155,9 @@ extension SuggestionDataHandler : SuggestionCallBacks {
     
     func getTableHeaderView() -> UIView? {
         return callBack?.getTableHeaderView()
+    }
+    
+    func didSelected(suggestion: Suggestion, atIndexPath indexPath: IndexPath) {
+        callBack?.didSelected(suggestion: suggestion, atIndexPath: indexPath)
     }
 }

@@ -21,9 +21,6 @@ class SuggestionListController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    convenience init(handler: SuggestionDataHandler) {
-        self.init(nibName: nil, bundle: nil)
-    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -31,9 +28,14 @@ class SuggestionListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundColor = UIColor.clear
-        self.view.backgroundColor = UIColor.clear
+        tableView.backgroundColor = UIColor.clear
+        view.backgroundColor = UIColor.clear
         setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func setupTableView() {
@@ -80,12 +82,8 @@ extension SuggestionListController : UITableViewDataSource {
 
 extension SuggestionListController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? SuggestionTableViewCell, let suggestion = cell.suggesion {
-            if dataHandler?.shouldSelect(suggestion: suggestion, indexPath: indexPath) ?? false {
-                //TODO: Handle after successful selection
-                
-                
-            }
+        if let cell = tableView.cellForRow(at: indexPath) as? SuggestionTableViewCell, let suggestion = cell.suggesion, dataHandler?.shouldSelect(suggestion: suggestion, indexPath: indexPath) ?? false {
+            dataHandler?.didSelected(suggestion: suggestion, atIndexPath: indexPath)
         }
     }
     
@@ -97,5 +95,11 @@ extension SuggestionListController : UITableViewDelegate {
 extension SuggestionListController : SuggestionNotifier {
     func refreshSuggestions() {
         tableView.reloadData()
+    }
+    
+    func showTopSuggestions() {
+        UIView.animate(withDuration: 0.5) {
+            self.tableView.contentOffset = .zero
+        }
     }
 }
