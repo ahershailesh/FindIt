@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nl4-bW-DaX">
                         <rect key="frame" x="16" y="4" width="58" height="49.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tn-bT-56m">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tn-bT-56m">
                                 <rect key="frame" x="8" y="4" width="42" height="41.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="2ly-H5-ezX"/>
@@ -41,6 +41,7 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Nl4-bW-DaX" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="trailing" constant="16" id="0iD-5w-JcT"/>
                     <constraint firstItem="Nl4-bW-DaX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Pbb-Dd-RpO"/>
                     <constraint firstItem="Nl4-bW-DaX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="bTL-LC-7ES"/>
                     <constraint firstAttribute="bottom" secondItem="Nl4-bW-DaX" secondAttribute="bottom" constant="4" id="tiq-so-nOk"/>
