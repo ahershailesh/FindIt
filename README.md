@@ -5,7 +5,7 @@
 This app is my Capstone project for the iOS Developer Nanodegree offered by Udacity. This Nanodegree course focuses on iOS app development using Swift, including UIKit Fundamentals, Networking, and Persistence with Code Data.
 
 ## About the App
-FindIt is an iOS app that let users use their camera to detect objects and then find related images using Flickr APIs.
+FindIt is an iOS app that will identify object using iPhone’s built in camera and provide high confidence suggestions which will auto refresh after 5 seconds. You can view previous suggestions by just swiping up the screen. If you feel suggestion provided by the app is correct and you want to fetch images related to that, you can just tap on suggestion, now you will have whole lot of images from flickr api tagged to that suggestion. As you scroll down in collection, app internally call for next set of images so you don't need to wait. You can select image to have full screen view under which you can save image to app which internally uses core data to save them or you can share that image on social media. you can see saved images when you start the app. or you can just press back button to go back to saved images screen.
 The details of the screens are as follows:
 
 | Screen        | Usage | Screenshot |
