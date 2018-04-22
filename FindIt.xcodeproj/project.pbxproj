@@ -80,7 +80,6 @@
 		8AE79391204D71A400BE7B1E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8AE79393204D85BB00BE7B1E /* PhotoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResult.swift; sourceTree = "<group>"; };
 		8AE79399204E423C00BE7B1E /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
-		8AE7939B204E425900BE7B1E /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		8AE7939D204E43F100BE7B1E /* SuggestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCell.swift; sourceTree = "<group>"; };
 		8AE7939E204E43F100BE7B1E /* SuggestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionCell.xib; sourceTree = "<group>"; };
 		8AE793A1204E447300BE7B1E /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
@@ -152,7 +151,6 @@
 				8AE79391204D71A400BE7B1E /* Extensions.swift */,
 				8AE7938F204D70F000BE7B1E /* Constants.swift */,
 				8AE7938D204D708700BE7B1E /* PhotoModel.swift */,
-				8AE7939B204E425900BE7B1E /* CameraController.swift */,
 				8AB8FA5F205D859D00B4ABDD /* CameraController.swift */,
 				8AE79389204D704200BE7B1E /* FlickrHandler.swift */,
 				8AE7938A204D704300BE7B1E /* NetworkManager.swift */,
