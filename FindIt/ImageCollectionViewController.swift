@@ -62,14 +62,8 @@ class ImageCollectionViewController: UIViewController {
     }
     
     @objc func presentCamera() {
-        if Constants.hasCameraAccess() {
-            if let _ = AVCaptureDevice.default(for: .video) {
-                let controller = CameraController()
-                navigationController?.pushViewController(controller, animated: true)
-            } else {
-                showAlert(message: "Camera is not available")
-            }
-        }
+        let controller = CameraController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

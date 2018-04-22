@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let controller = ImageCollectionViewController()
+        let controller = CameraController()
         let navigationController = UINavigationController(rootViewController: controller)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

@@ -1,10 +1,11 @@
 //
 //  CameraController.swift
-//  VisionSample
+//  VirtualTourist
 //
-//  Created by chris on 19/06/2017.
-//  Copyright © 2017 MRM Brand Ltd. All rights reserved.
+//  Created by Shailesh Aher on 2/3/18.
+//  Copyright © 2018 Shailesh Aher. All rights reserved.
 //
+
 
 import UIKit
 import AVFoundation
@@ -12,7 +13,6 @@ import Vision
 
 class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     @IBOutlet weak var previewView: UIView!
-    @IBOutlet weak var backButton: UIButton!
     
     // MARK:- Suggestion related stuff
     private var suggestionHandler = SuggestionDataHandler()
@@ -66,9 +66,8 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         navigationController?.navigationBar.isHidden = true
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.loadSuggestion), userInfo: nil, repeats: true)
         
-        setupCameraView()
+//        setupCameraView()
         setupSuggestionTableView()
-        setupButtons()
     }
     
     override func viewDidLayoutSubviews() {
@@ -91,21 +90,7 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         }
     }
     
-    // MARK:- Private methods
-    private func setupButtons() {
-        backButton.layer.cornerRadius = backButton.frame.width/2
-        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-    }
-    
-    @objc func backButtonTapped() {
-        switch listStatus {
-        case .fullScreen : suggestionHandler.showTopSuggestions(); return
-        case .halfScreen :
-            navigationController?.popViewController(animated: true)
-            setBackbuttonToLeft()
-            return
-        }
-    }
+    // MARK:- Private methodd
     
     private func setupSuggestionTableView() {
         suggestionHandler.callBack = self
@@ -113,7 +98,6 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         suggestionController.view.frame = CGRect(x: view.frame.minX, y: view.frame.minY, width: view.frame.width, height: view.frame.height)
         
         addChildViewController(suggestionController)
-        view.insertSubview(suggestionController.view, belowSubview: backButton)
     }
     
     private func setupCameraView() {
@@ -210,42 +194,6 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
     @objc private func loadSuggestion() {
         suggestionHandler.addSuggestions(suggestions: localSuggestions)
     }
-    
-    private func changeUI(withCurrentScrollPosition position: CGFloat) {
-        var percentShift : CGFloat = 0
-        if position > 0 {
-            percentShift = 1
-            if position <= maxScrollHeight {
-                percentShift = CGFloat(position / maxScrollHeight)
-                let buttonX = CGFloat(maxButtonX - 16) * percentShift + 16
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.backButton.frame = CGRect(origin: CGPoint(x: buttonX, y: 32), size: self.buttonSize)
-                    let angle = percentShift * (CGFloat.pi/(-2))
-                    self.backButton.transform =  CGAffineTransform(rotationAngle: angle)
-                })
-            } else {
-                setBackbuttonToRight()
-            }
-        } else {
-            setBackbuttonToLeft()
-        }
-        UIView.animate(withDuration: 0.1, animations: {
-            let color = UIColor(red: 0, green: 0, blue: 0, alpha: percentShift/2)
-            self.suggestionController.view.backgroundColor = color
-        })
-    }
-    
-    private func setBackbuttonToLeft() {
-        backButton.frame = leftFrame
-        backButton.transform =  CGAffineTransform(rotationAngle: 0)
-        listStatus = .halfScreen
-    }
-    
-    private func setBackbuttonToRight() {
-        backButton.frame = rightFrame
-        backButton.transform =  CGAffineTransform(rotationAngle: (-1)*CGFloat.pi/2)
-        listStatus = .fullScreen
-    }
 }
 
 // MARK: - SuggestionCallBacks
@@ -266,7 +214,7 @@ extension CameraController : SuggestionCallBacks {
     }
     
     func tableViewScrolled(scrollView: UIScrollView) {
-        changeUI(withCurrentScrollPosition: scrollView.contentOffset.y)
+
     }
     
     func didSelected(suggestion: Suggestion, atIndexPath indexPath: IndexPath) {

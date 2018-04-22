@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraController" customModule="FindIt" customModuleProvider="target">
             <connections>
-                <outlet property="backButton" destination="Ocz-db-gF4" id="tNJ-ls-hTm"/>
                 <outlet property="previewView" destination="Snq-N8-c5h" id="sce-Tc-qYc"/>
                 <outlet property="view" destination="iN0-l3-epB" id="SXF-tz-vcG"/>
             </connections>
@@ -25,33 +24,15 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocz-db-gF4">
-                    <rect key="frame" x="16" y="52" width="48" height="48"/>
-                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="48" id="SrR-3b-XGh"/>
-                        <constraint firstAttribute="height" constant="48" id="dMh-Xh-zph"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <inset key="contentEdgeInsets" minX="-2" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" image="left_6x">
-                        <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Snq-N8-c5h" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="3DU-jh-2a2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Snq-N8-c5h" secondAttribute="bottom" id="6Gf-5o-e0f"/>
-                <constraint firstItem="Ocz-db-gF4" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="32" id="OKE-Fj-Xuv"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Snq-N8-c5h" secondAttribute="trailing" id="Zfh-91-TCe"/>
                 <constraint firstItem="Snq-N8-c5h" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="b7a-Ni-uIp"/>
-                <constraint firstItem="Ocz-db-gF4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="srX-Oi-y9f"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
     </objects>
-    <resources>
-        <image name="left_6x" width="180" height="180"/>
-    </resources>
 </document>
